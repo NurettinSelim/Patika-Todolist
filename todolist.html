@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input {
+            padding: 10px;
+        }
+
+        button {
+            padding: 6px;
+        }
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>To-Do Listesi</h1>
+        <input type="text" id="todoInput">
+        <button onclick="addTodo()">To-Do Ekle</button>
+        <ul id="todoItems"></ul>
+    </div>
+
+    <script>
+        function addTodo(){
+            const inputEl = document.getElementById("todoInput")
+            const listEl = document.getElementById("todoItems")
+
+            const itemEl = document.createElement("li")
+            itemEl.innerHTML = inputEl.value + " <button onclick='deleteTodo(this)'>Delete</button>"
+            listEl.appendChild(itemEl)
+            inputEl.value = ""
+        }
+
+        function deleteTodo(button){
+            const itemEl = button.parentElement
+            itemEl.remove()
+        }
+
+
+    </script>
+
+</body>
+
+</html>
